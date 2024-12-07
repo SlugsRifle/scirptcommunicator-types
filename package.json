@@ -1,6 +1,6 @@
 {
   "name": "@types/scriptcommunicator",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "",
   "types": "index.d.ts",
   "keywords": [],
