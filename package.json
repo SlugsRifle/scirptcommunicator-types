@@ -5,5 +5,8 @@
   "types": "index.d.ts",
   "keywords": [],
   "author": "",
+  "repository": {
+    "url": "https://github.com/SlugsRifle/scirptcommunicator-types.git"
+  },
   "license": "GPL-3.0-only"
 }
