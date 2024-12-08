@@ -1,3 +1,5 @@
+import { Connectable } from "./connectable";
+
 export interface PortInfo {
     portName: string;
     systemLocation: string;
@@ -45,9 +47,7 @@ export interface AardvarkI2cSpiGpioConfig {
     outValue: boolean;
 }
 
-export interface Connectable<T> {
-    connect: (func: T) => void;
-}
+
 
 export interface ScriptInf {
     availableSerialPorts(): string[];
@@ -186,21 +186,22 @@ export interface ScriptSerialPort {
 }
 
 export interface ScriptAardvarkI2cSpi {
-    getInterfaceSettings(): AardvarkI2cSpiSettings
-    i2cMasterFreeBus(): void
-    detectDevices(): string
-    connectToDevice(aardvarkI2cSpiSettings: AardvarkI2cSpiSettings): boolean
-    disconnect(): void
-    i2cMasterReadWrite(flags: number, slaveAddress: number, numberOfBytesToRead: number, dataToSend?: number[]): boolean
-    i2cMasterReadLastReceivedData(): number[]
-    spiMasterSendReceiveData(dataToSend: number[]): boolean
-    spiMasterReadLastReceivedData(): number[]
-    setOutput(pinIndex: number, high: boolean): boolean
-    changePinConfiguration(pinIndex: number, isInput: boolean, withPullups?: boolean): boolean
-    readAllInputs(): boolean[]
-    isConnected(): boolean
-    slaveSetResponse(response: number[]): boolean
-    aardvarkl2cSpilnputStatesChangedSignal(states: boolean[]): void
-    slaveDataSentSignal(data: number[]): void
-    slaveDataReceivedSignal(data: number[]): void
+    getInterfaceSettings(): AardvarkI2cSpiSettings;
+    i2cMasterFreeBus(): void;
+    detectDevices(): string;
+    connectToDevice(aardvarkI2cSpiSettings: AardvarkI2cSpiSettings): boolean;
+    disconnect(): void;
+    i2cMasterReadWrite(flags: number, slaveAddress: number, numberOfBytesToRead: number, dataToSend?: number[]): boolean;
+    i2cMasterReadLastReceivedData(): number[];
+    spiMasterSendReceiveData(dataToSend: number[]): boolean;
+    spiMasterReadLastReceivedData(): number[];
+    setOutput(pinIndex: number, high: boolean): boolean;
+    changePinConfiguration(pinIndex: number, isInput: boolean, withPullups?: boolean): boolean;
+    readAllInputs(): boolean[];
+    isConnected(): boolean;
+    slaveSetResponse(response: number[]): boolean;
+    aardvarkl2cSpilnputStatesChangedSigna: Connectable<(states: boolean[]) => void>;
+    slaveDataSentSignal: Connectable<(data: number[]) => void>;
+    slaveDataReceivedSignal: Connectable<(data: number[]) => void>;
 }
+
